@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">flashcards</string>
+    <string name="Term">Term</string>
+    <string name="Definition">Definition</string>
+    <string name="front">Front</string>
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="add">Add</string>
+    <string name="definition">Definition</string>
+</resources>
