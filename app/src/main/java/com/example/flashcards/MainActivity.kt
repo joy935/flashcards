@@ -1,18 +1,19 @@
 package com.example.flashcards
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.content.Context
+import android.content.Intent
 
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
-    // UI elements: input front card, input back card,
+    // define UI elements: input front card, input back card,
     // finish adding button and next card button
     private lateinit var editFront: EditText
     private lateinit var editBack: EditText
@@ -37,15 +38,17 @@ class MainActivity : AppCompatActivity() {
         // initialize SharedPreferences
         sharedPreferences = getSharedPreferences("FlashcardPrefs", Context.MODE_PRIVATE)
 
-        // load the last card saved
+        // load the last flashcard saved
         loadCard()
 
-        // set done button click listener to finish adding cards
+        // set done button click listener to finish adding flashcards
         doneButton.setOnClickListener {
-            quitAddingCards()
+            Intent(this, DashboardActivity::class.java).also {
+                startActivity(it)
+            }
         }
 
-        // set next button click listener to move to the next card
+        // set next button click listener to move to the next flashcard
         nextButton.setOnClickListener {
             saveCards()
         }
@@ -93,11 +96,5 @@ class MainActivity : AppCompatActivity() {
             editFront.text.clear()
             editBack.text.clear()
         }
-    }
-
-    // quitAddingCards is a function to quit adding cards
-    // by going back to the menu
-    private fun quitAddingCards() {
-        Log.i(TAG, "quitAddingCards: Finish")
     }
 }

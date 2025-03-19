@@ -76,6 +76,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/blue"
             android:text="@string/done"
+            android:textColor="@color/white"
             tools:ignore="VisualLintButtonSize"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="639dp" />
@@ -88,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/next"
+            android:textColor="@color/white"
             tools:layout_editor_absoluteX="252dp"
             tools:layout_editor_absoluteY="630dp"
             tools:ignore="VisualLintButtonSize"
