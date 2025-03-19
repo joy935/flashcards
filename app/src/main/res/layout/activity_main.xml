@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Front of the flashcard -->
     <TextView
         android:id="@+id/frontLabel"
         android:layout_width="wrap_content"
@@ -30,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frontLabel" />
 
+    <!-- Back of the flashcard -->
     <TextView
         android:id="@+id/backLabel"
         android:layout_width="wrap_content"
@@ -65,32 +67,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Done button to finish adding new flashcards -->
         <Button
             android:id="@+id/doneButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/save"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="639dp"
+            android:backgroundTint="@color/blue"
+            android:text="@string/done"
             tools:ignore="VisualLintButtonSize"
-            android:backgroundTint="@color/blue"/>
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="639dp" />
 
+        <!-- Next button to keep adding new flashcards -->
         <Button
-            android:id="@+id/addButton"
+            android:id="@+id/nextButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/add"
+            android:text="@string/next"
             tools:layout_editor_absoluteX="252dp"
             tools:layout_editor_absoluteY="630dp"
             tools:ignore="VisualLintButtonSize"
             android:backgroundTint="@color/blue"/>
-
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
