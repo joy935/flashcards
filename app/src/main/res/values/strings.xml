@@ -10,4 +10,9 @@
     <string name="done">Done</string>
     <string name="next">Next</string>
     <string name="practice">Practice</string>
+    <string name="frontCard">front</string>
+    <string name="backCard">back</string>
+    <string name="front_side">Front Side</string>
+    <string name="back_side">Back Side</string>
+    <string name="display_the_flashcards">display the flashcards</string>
 </resources>

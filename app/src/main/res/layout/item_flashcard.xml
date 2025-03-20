@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this layout is used to populate each flashcard in the main activity -->
+<!-- use linear layout to align vertically the front and back of the flashcard -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@android:color/darker_gray"
+    android:elevation="2dp">
+
+    <!-- front of the flashcard -->
+    <TextView
+        android:id="@+id/flashcard_front"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/front_side"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="8dp"/>
+
+    <!-- back of the flashcard -->
+    <TextView
+        android:id="@+id/flashcard_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_side"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:padding="8dp"/>
+</LinearLayout>

@@ -7,43 +7,65 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
-<LinearLayout
-    style="?android:attr/buttonBarStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="34dp"
-    android:orientation="horizontal"
-    android:gravity="center"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
+    <!-- recycler view to display the flashcards -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:contentDescription="@string/display_the_flashcards"
+        android:id="@+id/viewCards"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_margin="8dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="34dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.722" />
 
-    <!-- practice button to start reviewing flashcards -->
-    <Button
-        android:id="@+id/practiceButton"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="0dp"
+    <!-- use linear layout to align horizontally the buttons -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white"
-        android:text="@string/practice"
-        tools:ignore="VisualLintButtonSize"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="639dp" />
+        android:layout_marginBottom="34dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <!-- add button to add new flashcards -->
-    <Button
-        android:id="@+id/addButton"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/add"
-        android:textColor="@color/white"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="630dp"
-        tools:ignore="VisualLintButtonSize"
-        android:backgroundTint="@color/blue"/>
-</LinearLayout>
+        <!-- practice button to start reviewing flashcards -->
+        <Button
+            android:id="@+id/practiceButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="@string/practice"
+            android:textColor="@color/white"
+            tools:ignore="VisualLintButtonSize"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="639dp" />
+
+        <!-- add button to add new flashcards -->
+        <Button
+            android:id="@+id/addButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            tools:ignore="VisualLintButtonSize"
+            tools:layout_editor_absoluteX="252dp"
+            tools:layout_editor_absoluteY="630dp" />
+    </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
