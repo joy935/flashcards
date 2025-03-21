@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".PracticeActivity">
 
+    <!-- button to go back to the main menu -->
     <Button
         android:id="@+id/donePracticeButton"
         android:layout_width="wrap_content"
@@ -19,6 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- button to flip the flashcard -->
     <Button
         android:id="@+id/flipButton"
         android:layout_width="wrap_content"
@@ -30,6 +32,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/donePracticeButton" />
 
+    <!-- button to move to the next flashcard -->
     <Button
         android:id="@+id/nextPracticeButton"
         android:layout_width="wrap_content"
@@ -41,4 +44,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/flipButton" />
+
+    <!-- display of the front (and the back) of the flashcard -->
+    <TextView
+        android:id="@+id/flashcardsDeck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/frondCard"
+        android:background="@color/blue"
+        android:textColor="@color/white"
+        android:padding="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/flipButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

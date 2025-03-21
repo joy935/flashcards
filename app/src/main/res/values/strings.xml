@@ -18,4 +18,6 @@
     <string name="flip">Flip</string>
     <string name="nextPractice">Next</string>
     <string name="donePractice">Done</string>
+    <string name="frondCard">front</string>
+    <string name="no_flashcards">No flashcards available.</string>
 </resources>

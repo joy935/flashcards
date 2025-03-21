@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,12 +42,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.isNestedScrollingEnabled = true  // enable scrolling
         sharedPreferences = getSharedPreferences("FlashcardPrefs", Context.MODE_PRIVATE)
         flashcardList = loadFlashcards()
-        Log.d("MainActivity", "Loaded flashcards: ${flashcardList.size}")
 
         // initialize the adapter with the flashcards list
         adapter = FlashcardAdapter(flashcardList)
         recyclerView.adapter = adapter
-        //adapter.notifyDataSetChanged() for testing
 
         // set practice button to move to the PracticeActivity
         practiceButton.setOnClickListener {
