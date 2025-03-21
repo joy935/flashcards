@@ -18,6 +18,9 @@ class FlashcardAdapter(private val flashcardList: List<Flashcard>) :
         return ViewHolder(view)
     }
 
+    // getItemCount is a function that returns the total number of flashcards in the list
+    override fun getItemCount(): Int = flashcardList.size
+
     // onBindViewHolder is a function that assigns the flashcard front and back
     // content to the corresponding TextView
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,9 +28,6 @@ class FlashcardAdapter(private val flashcardList: List<Flashcard>) :
         holder.frontTextView.text = flashcard.front
         holder.backTextView.text = flashcard.back
     }
-
-    // getItemCount is a function that returns the total number of flashcards in the list
-    override fun getItemCount(): Int = flashcardList.size
 
     // ViewHolder class links each TextView with the flashcard content
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

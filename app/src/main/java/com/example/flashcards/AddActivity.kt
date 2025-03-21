@@ -58,7 +58,8 @@ class AddActivity : AppCompatActivity() {
 
         if (frontText.isNotEmpty() && backText.isNotEmpty()) {
             // retrieve the flashcards list or initialize an empty JSON array
-            val flashcardsJson = sharedPreferences.getString("flashcards", "[]") ?: "[]"
+            val flashcardsJson = sharedPreferences
+                .getString("flashcards", "[]") ?: "[]"
             // convert the JSON string into a JSON array
             val jsonArray = JSONArray(flashcardsJson)
             // add the new flashcard to the array
