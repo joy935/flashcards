@@ -15,4 +15,7 @@
     <string name="front_side">Front Side</string>
     <string name="back_side">Back Side</string>
     <string name="display_the_flashcards">display the flashcards</string>
+    <string name="flip">Flip</string>
+    <string name="nextPractice">Next</string>
+    <string name="donePractice">Done</string>
 </resources>

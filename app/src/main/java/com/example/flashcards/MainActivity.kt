@@ -49,6 +49,13 @@ class MainActivity : AppCompatActivity() {
         adapter = FlashcardAdapter(flashcardList)
         recyclerView.adapter = adapter
         //adapter.notifyDataSetChanged() for testing
+
+        // set practice button to move to the PracticeActivity
+        practiceButton.setOnClickListener {
+            Intent(this, PracticeActivity::class.java).also {
+                startActivity(it)
+            }
+        }
     }
 
     // loadFlashcards is a function that retrieves saved flashcards from SharedPreferences
