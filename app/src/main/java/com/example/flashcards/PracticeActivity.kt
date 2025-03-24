@@ -10,8 +10,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONArray
 import org.json.JSONException
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 
-class PracticeActivity : AppCompatActivity() {
+class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
 
     //define UI elements
     private lateinit var donePracticeButton: Button
@@ -22,6 +24,10 @@ class PracticeActivity : AppCompatActivity() {
     private var flashcardList: MutableList<Flashcard> = mutableListOf()
     private var currentIndex = 0
     private var displayFront = true
+    private lateinit var animation1: Animation
+    private lateinit var animation2: Animation
+    private var isFrontOfCardShowing = true
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +39,12 @@ class PracticeActivity : AppCompatActivity() {
         flipButton = findViewById(R.id.flipButton)
         nextPracticeButton = findViewById(R.id.nextPracticeButton)
         flashcardsDeck = findViewById(R.id.flashcardsDeck)
+        // apply animation from to_middle
+        animation1 = AnimationUtils.loadAnimation(this, R.anim.to_middle)
+        animation1.setAnimationListener(this)
+        // apply animation from to_middle
+        animation2 = AnimationUtils.loadAnimation(this, R.anim.from_middle)
+        animation2.setAnimationListener(this)
 
         // load flashcards
         sharedPreferences = getSharedPreferences("FlashcardPrefs", Context.MODE_PRIVATE)
@@ -58,8 +70,10 @@ class PracticeActivity : AppCompatActivity() {
 
         // set flip button to flip the flashcard
         flipButton.setOnClickListener {
-            displayFront = !displayFront
-            updateFlashcard()
+            // displayFront = !displayFront
+            // updateFlashcard()
+            flipButton.isEnabled = false
+            flashcardsDeck.startAnimation(animation1)
         }
 
         // set next practice button to move to the next flashcard
@@ -103,5 +117,30 @@ class PracticeActivity : AppCompatActivity() {
         }
         // return a list of flashcards
         return list
+    }
+
+    // handle the animation end and change content of flashcard
+    override fun onAnimationEnd(animation: Animation?) {
+        if (animation === animation1) {
+            // after shrinking, change the content of the flashcard
+            if (isFrontOfCardShowing) {
+                flashcardsDeck.text = flashcardList[currentIndex].back // show the back of the card
+            } else {
+                flashcardsDeck.text = flashcardList[currentIndex].front // show the front of the card
+            }
+            // start the growing animation
+            flashcardsDeck.startAnimation(animation2)
+        } else if (animation === animation2) {
+            // after growing, re-enable the button and toggle the front/back of the card
+            isFrontOfCardShowing = !isFrontOfCardShowing
+            flipButton.isEnabled = true
+        }
+    }
+    override fun onAnimationRepeat(animation: Animation?) {
+        // no need to implement this for this case
+    }
+
+    override fun onAnimationStart(animation: Animation?) {
+        // no need to implement this for this case
     }
 }
