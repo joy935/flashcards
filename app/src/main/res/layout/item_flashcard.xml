@@ -6,8 +6,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
+    android:layout_margin="10dp"
     android:layout_marginBottom="8dp"
-    android:background="@android:color/darker_gray"
+    android:background="@drawable/flashcard_background"
     android:elevation="2dp">
 
     <!-- front of the flashcard -->
@@ -16,8 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/front_side"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:padding="8dp"/>
 
@@ -27,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/back_side"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         android:padding="8dp"/>
 </LinearLayout>
