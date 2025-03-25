@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+    <!-- Front of the flashcard -->
+    <TextView
+        android:id="@+id/frontLabelEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        android:layout_marginTop="40dp"
+        android:text="@string/front"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editFrontEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="34dp"
+        android:textSize="18sp"
+        android:autofillHints="text"
+        android:hint="@string/Term"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frontLabelEdit" />
+
+    <!-- Back of the flashcard -->
+    <TextView
+        android:id="@+id/backLabelEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="44dp"
+        android:textSize="18sp"
+        android:text="@string/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editFrontEdit" />
+
+    <EditText
+        android:id="@+id/editBackEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="34dp"
+        android:autofillHints="text"
+        android:hint="@string/Definition"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backLabelEdit"
+        tools:ignore="TextContrastCheck" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Done button to finish adding new flashcards -->
+        <Button
+            android:id="@+id/doneButtonEdit"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:backgroundTint="@color/blue"
+            android:text="@string/done"
+            android:textColor="@color/white"
+            tools:ignore="VisualLintButtonSize"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="639dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

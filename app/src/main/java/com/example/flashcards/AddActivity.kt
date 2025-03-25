@@ -1,7 +1,6 @@
 package com.example.flashcards
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +8,6 @@ import android.content.SharedPreferences
 import android.content.Context
 import android.content.Intent
 import org.json.JSONArray
-
-private const val TAG = "AddActivity"
 
 class AddActivity : AppCompatActivity() {
 
@@ -70,9 +67,6 @@ class AddActivity : AppCompatActivity() {
                 putString("flashcards", jsonArray.toString())
                 apply()
             }
-
-            // for testing
-            Log.i(TAG, "Saved card: Front: $frontText, Back: $backText")
 
             // clear the fields for the next card
             editFront.text.clear()

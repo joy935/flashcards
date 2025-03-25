@@ -4,31 +4,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp"
     android:layout_margin="10dp"
     android:layout_marginBottom="8dp"
     android:background="@drawable/flashcard_background"
-    android:elevation="2dp">
+    android:elevation="2dp"
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <!-- front of the flashcard -->
     <TextView
         android:id="@+id/flashcard_front"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
         android:text="@string/front_side"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="8dp"/>
+        android:textStyle="bold" />
 
     <!-- back of the flashcard -->
+
     <TextView
         android:id="@+id/flashcard_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
         android:text="@string/back_side"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:padding="8dp"/>
+        android:textSize="18sp" />
+
+
+    <!-- use horizontal layout for the edit and delete buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="4dp" >
+
+        <!-- edit button to edit a specific flashcard -->
+        <Button
+            android:id="@+id/editButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16sp"
+            android:text="@string/Edit"
+            android:backgroundTint="@color/blue"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="16dp"/>
+
+        <!-- delete button to delete a specific flashcard -->
+        <Button
+            android:id="@+id/deleteButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/Delete"
+            android:backgroundTint="@color/blue"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="16dp"/>
+    </LinearLayout>
 </LinearLayout>

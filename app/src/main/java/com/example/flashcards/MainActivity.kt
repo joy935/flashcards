@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
 import org.json.JSONException
+import androidx.core.content.edit
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,7 +45,32 @@ class MainActivity : AppCompatActivity() {
         flashcardList = loadFlashcards()
 
         // initialize the adapter with the flashcards list
-        adapter = FlashcardAdapter(flashcardList)
+        adapter = FlashcardAdapter(flashcardList,
+            // edit a specific flashcard by passing the position
+            // of the card to the EditActivity using Intent
+            onEditClick = {
+                position ->
+            val intent = Intent(this, EditActivity::class.java)
+            intent.putExtra("isEdit", true)
+            intent.putExtra("editIndex", position)
+            startActivity(intent)
+        },
+            // delete a specific flashcard by removing the flashcard
+            // at its specific position and update the flashcard list
+            onDeleteClick = {
+                position ->
+                flashcardList.removeAt(position)
+                adapter.notifyItemRemoved(position)
+
+                // save the updated list ot SharedPreferences
+                sharedPreferences.edit {
+                    val updatedList = JSONArray()
+                    flashcardList.forEach { card ->
+                        updatedList.put("${card.front}::${card.back}")
+                    }
+                    putString("flashcards", updatedList.toString())
+                }
+            })
         recyclerView.adapter = adapter
 
         // set practice button to move to the PracticeActivity

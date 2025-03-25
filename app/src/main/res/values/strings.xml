@@ -20,4 +20,6 @@
     <string name="donePractice">Done</string>
     <string name="frondCard">front</string>
     <string name="no_flashcards">No flashcards available.</string>
+    <string name="Edit">Edit</string>
+    <string name="Delete">Delete\n</string>
 </resources>
