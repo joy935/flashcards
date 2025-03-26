@@ -23,7 +23,6 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
     private lateinit var sharedPreferences: SharedPreferences
     private var flashcardList: MutableList<Flashcard> = mutableListOf()
     private var currentIndex = 0
-    private var displayFront = true
     private lateinit var animation1: Animation
     private lateinit var animation2: Animation
     private var isFrontOfCardShowing = true
@@ -73,13 +72,18 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
             // displayFront = !displayFront
             // updateFlashcard()
             flipButton.isEnabled = false
+            // stop animation
+            flashcardsDeck.clearAnimation()
+            flashcardsDeck.animation = animation1
+            // start animation
             flashcardsDeck.startAnimation(animation1)
         }
 
         // set next practice button to move to the next flashcard
         nextPracticeButton.setOnClickListener {
+            // get the next flashcard and when it's the last one, go back
+            // to the first flashcard
             currentIndex = (currentIndex + 1) % flashcardList.size
-            displayFront = true
             updateFlashcard()
         }
     }
@@ -89,7 +93,8 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
     // to the displayFront value
     private fun updateFlashcard() {
         val card = flashcardList[currentIndex]
-        flashcardsDeck.text = if (displayFront) card.front else card.back
+        isFrontOfCardShowing = true
+        flashcardsDeck.text = if (isFrontOfCardShowing) card.front else card.back
     }
 
     // loadFlashcards is a function that retrieves saved flashcards from SharedPreferences
@@ -120,17 +125,22 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
     }
 
     // handle the animation end and change content of flashcard
-    override fun onAnimationEnd(animation: Animation?) {
+    override fun onAnimationEnd(animation: Animation) {
         if (animation === animation1) {
-            // after shrinking, change the content of the flashcard
+            // check whether the front of the card is showing
             if (isFrontOfCardShowing) {
-                flashcardsDeck.text = flashcardList[currentIndex].back // show the back of the card
+                // set the flashcard from front to back
+                flashcardsDeck.text = flashcardList[currentIndex].back
             } else {
-                flashcardsDeck.text = flashcardList[currentIndex].front // show the front of the card
+                // set the flashcard from the back to front
+                flashcardsDeck.text = flashcardList[currentIndex].front
             }
+            // stop the animation
+            flashcardsDeck.clearAnimation()
+            flashcardsDeck.animation = animation2
             // start the growing animation
             flashcardsDeck.startAnimation(animation2)
-        } else if (animation === animation2) {
+        } else {
             // after growing, re-enable the button and toggle the front/back of the card
             isFrontOfCardShowing = !isFrontOfCardShowing
             flipButton.isEnabled = true
