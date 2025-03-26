@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -12,6 +13,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 
 class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
 
@@ -94,6 +96,9 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
     private fun updateFlashcard() {
         val card = flashcardList[currentIndex]
         isFrontOfCardShowing = true
+        // update the color of the background of the flashcard
+        val bgDrawable = flashcardsDeck.background.mutate() as GradientDrawable
+        bgDrawable.setColor(ContextCompat.getColor(this, R.color.lightblue))
         flashcardsDeck.text = if (isFrontOfCardShowing) card.front else card.back
     }
 
@@ -127,12 +132,18 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
     // handle the animation end and change content of flashcard
     override fun onAnimationEnd(animation: Animation) {
         if (animation === animation1) {
+            val bgDrawable = flashcardsDeck.background.mutate() as GradientDrawable
             // check whether the front of the card is showing
             if (isFrontOfCardShowing) {
+                // update the color of the background of the flashcard to be green for the back
+                bgDrawable.setColor(ContextCompat.getColor(this, R.color.green))
                 // set the flashcard from front to back
                 flashcardsDeck.text = flashcardList[currentIndex].back
             } else {
+                // update the color of the background of the flashcard to be blue for the front
+                bgDrawable.setColor(ContextCompat.getColor(this, R.color.lightblue))
                 // set the flashcard from the back to front
+                //flashcardsDeck.backgroundTintList = ContextCompat.getColorStateList(this, R.color.green)
                 flashcardsDeck.text = flashcardList[currentIndex].front
             }
             // stop the animation
