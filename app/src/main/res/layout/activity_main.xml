@@ -8,6 +8,9 @@ android:layout_height="match_parent"
 tools:context=".MainActivity">
 
     <!-- recycler view to display the flashcards -->
+
+    <!-- use linear layout to align horizontally the buttons -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:contentDescription="@string/display_the_flashcards"
         android:id="@+id/viewCards"
@@ -24,7 +27,6 @@ tools:context=".MainActivity">
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.722" />
 
-    <!-- use linear layout to align horizontally the buttons -->
     <LinearLayout
         android:id="@+id/linearLayout"
         style="?android:attr/buttonBarStyle"

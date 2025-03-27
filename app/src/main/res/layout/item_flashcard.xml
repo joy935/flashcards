@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:layout_marginBottom="8dp"
+    android:layout_marginTop="18dp"
     android:background="@drawable/ic_rounded_background"
     android:backgroundTint="@color/lightblue"
     android:elevation="2dp"
@@ -16,7 +17,7 @@
     <TextView
         android:id="@+id/flashcard_front"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="8dp"
         android:text="@string/front_side"
@@ -29,7 +30,7 @@
     <TextView
         android:id="@+id/flashcard_back"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="8dp"
         android:text="@string/back_side"
@@ -43,8 +44,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:paddingTop="4dp" >
 
         <!-- edit button to edit a specific flashcard -->
