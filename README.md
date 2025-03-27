@@ -29,7 +29,7 @@ This mobile application provides a foundation for adding more advanced features 
 * Flip animation: Uses two sequential animations to create a shrinking and growing effect
 * Drawable styling: Applies round corners and a background colorto keep a polished a consistent user interface look
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/9a-PMR_9bic)
 
 # Development Environment
 
