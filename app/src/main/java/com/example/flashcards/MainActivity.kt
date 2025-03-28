@@ -14,7 +14,9 @@ import androidx.core.content.edit
 
 class MainActivity : AppCompatActivity() {
 
-    // define UI elements
+    // define UI elements: practice and add button, recycler View to
+    // display the flashcards, adapter to populate each card,
+    // local storage using sharedPreferences and a mutable flashcard list
     private lateinit var practiceButton: Button
     private lateinit var addButton: Button
     private lateinit var recyclerView: RecyclerView
@@ -30,13 +32,6 @@ class MainActivity : AppCompatActivity() {
         practiceButton = findViewById(R.id.practiceButton)
         addButton = findViewById(R.id.addButton)
         recyclerView = findViewById(R.id.viewCards)
-
-        // set add button click listener to move to AddActivity
-        addButton.setOnClickListener {
-            Intent(this, AddActivity::class.java).also {
-                startActivity(it)
-            }
-        }
 
         // set up RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -72,6 +67,13 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         recyclerView.adapter = adapter
+
+        // set add button click listener to move to AddActivity
+        addButton.setOnClickListener {
+            Intent(this, AddActivity::class.java).also {
+                startActivity(it)
+            }
+        }
 
         // set practice button to move to the PracticeActivity
         practiceButton.setOnClickListener {

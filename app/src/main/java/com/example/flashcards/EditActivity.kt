@@ -11,7 +11,8 @@ import org.json.JSONArray
 
 class EditActivity : AppCompatActivity() {
 
-    // define UI elements
+    // define UI elements: input front card, input back card and
+    // done button to save the modification
     private lateinit var editFrontEdit: EditText
     private lateinit var editBackEdit: EditText
     private lateinit var doneButtonEdit: Button
@@ -41,6 +42,8 @@ class EditActivity : AppCompatActivity() {
             val jsonArray = JSONArray(flashcardsJson)
             val card = jsonArray.getString(editIndex)
             val parts = card.split("::")
+            // check there are two parts before assigning
+            // the front and back contents
             if (parts.size == 2) {
                 editFrontEdit.setText(parts[0])
                 editBackEdit.setText(parts[1])
@@ -48,6 +51,7 @@ class EditActivity : AppCompatActivity() {
         }
 
         // set done button click listener to finish editing the flashcard
+        // and going back to the main screen
         doneButtonEdit.setOnClickListener {
             saveCard()
             Intent(this, MainActivity::class.java).also {
@@ -56,10 +60,12 @@ class EditActivity : AppCompatActivity() {
         }
     }
 
+    // saveCard is a function that saves the modifications on the
+    // flashcard in the local storage
     private fun saveCard() {
         val frontText = editFrontEdit.text.toString()
         val backText = editBackEdit.text.toString()
-
+        // checks that teh front and back inputs aren't empty
         if (frontText.isNotEmpty() && backText.isNotEmpty()) {
             // retrieve the flashcards list or initialize an empty JSON array
             val flashcardsJson = sharedPreferences
@@ -70,6 +76,7 @@ class EditActivity : AppCompatActivity() {
             val isEdit = intent.getBooleanExtra("isEdit", false)
             val editIndex = intent.getIntExtra("editIndex", -1)
 
+            // checks that the content has been modified
             if (isEdit && editIndex != -1) {
                 // replace existing flashcard
                 jsonArray.put(editIndex, "$frontText::$backText")

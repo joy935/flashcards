@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- growing animation used in the practice screen -->
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <scale
         android:fromXScale="0.0" android:toXScale="1.0"

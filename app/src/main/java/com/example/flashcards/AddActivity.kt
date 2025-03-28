@@ -35,6 +35,7 @@ class AddActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("FlashcardPrefs", Context.MODE_PRIVATE)
 
         // set done button click listener to finish adding flashcards
+        // and go to the main screen
         doneButton.setOnClickListener {
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)

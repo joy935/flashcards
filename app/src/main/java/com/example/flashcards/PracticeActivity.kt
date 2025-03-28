@@ -17,7 +17,10 @@ import androidx.core.content.ContextCompat
 
 class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
 
-    //define UI elements
+    //define UI elements: done, flip and next buttons, display the flashcard,
+    // local storage using sharedPreferences, mutable list of flashcard,
+    // current index, growing and shrinking animations and boolean regarding
+    // the front card showing
     private lateinit var donePracticeButton: Button
     private lateinit var flipButton: Button
     private lateinit var nextPracticeButton: Button
@@ -62,13 +65,6 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
             nextPracticeButton.isEnabled = false
         }
 
-        // set done practice button listener to go back to the main menu
-        donePracticeButton.setOnClickListener {
-            Intent(this, MainActivity::class.java).also {
-                startActivity(it)
-            }
-        }
-
         // set flip button to flip the flashcard
         flipButton.setOnClickListener {
             // displayFront = !displayFront
@@ -79,6 +75,13 @@ class PracticeActivity : AppCompatActivity(), Animation.AnimationListener {
             flashcardsDeck.animation = animation1
             // start animation
             flashcardsDeck.startAnimation(animation1)
+        }
+
+        // set done practice button listener to go back to the main menu
+        donePracticeButton.setOnClickListener {
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+            }
         }
 
         // set next practice button to move to the next flashcard
